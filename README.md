@@ -16,6 +16,10 @@ $ npm run dev
 $ open http://localhost:7001/
 ```
 
+#### 图片服务器地址
+* 安装http-server
+* cd project folder
+* `http-server -p 7002  -a` 启动服务
 ### Deploy
 
 ```bash

@@ -29,6 +29,24 @@ class UploadController extends Controller {
     }
     ctx.helper.handleResponse(response, ctx);
   }
+
+  async getPage() {
+    const { ctx } = this;
+    const response = new Response(0, null, null);
+    const query = ctx.helper.handleQueryParams(ctx);
+    try {
+      const res = await ctx.service.photo.getPage(query);
+      response.message = '查询成功！';
+      response.data = res;
+    } catch (error) {
+      ctx.helper.handleCatchResponse(response, error);
+    }
+    ctx.helper.handleResponse(response, ctx);
+  }
+
+  async preview() {
+    
+  }
 }
 
 module.exports = UploadController;

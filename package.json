@@ -14,7 +14,8 @@
     "egg-passport": "^2.1.1",
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^6.0.0",
-    "mysql2": "^2.3.2"
+    "mysql2": "^2.3.2",
+    "resize-img": "^2.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

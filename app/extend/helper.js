@@ -48,6 +48,10 @@ module.exports = {
             }
         });
     },
+    getUserId() {
+        const {user} = this.ctx.session; 
+        return user ? user.id : 1;
+    },
     handleCatchResponse(response, error) {
         response.message = error.message;
         response.code = -1;
@@ -55,6 +59,16 @@ module.exports = {
     handleResponse(response, ctx) {
         ctx.body = response;
         ctx.status = 200;
+    },
+    handleQueryParams(ctx) {
+        const {pageIndex, pageSize, orderKey, orderBy,  ...other} = ctx.request.query;
+        return {
+            offset: (pageIndex - 1) * pageSize,
+            limit: parseInt(pageSize, 10)|| 10,
+            orderKey: orderKey || 'created_at',
+            orderBy: orderBy || 'DESC',
+            ...other
+        }
     }
 }
 

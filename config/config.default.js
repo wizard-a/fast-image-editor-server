@@ -1,6 +1,7 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
+const path = require('path');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -47,6 +48,11 @@ module.exports = appInfo => {
   config.multipart = {
     mode: 'file',
   };
+
+  console.log('appInfo.baseDir=>', path.join(appInfo.baseDir, '/upload'));
+  config.view = {
+    root: path.join(appInfo.baseDir, '/upload'),
+  }
 
   config.onerror = {
     json(err, ctx) {

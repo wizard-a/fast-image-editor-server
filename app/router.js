@@ -25,5 +25,18 @@ module.exports = app => {
    * user router end
    */
 
+
+  /**
+   * upload router begin
+   */
+  // 上传图片
   router.post('/api/upload', jwt, controller.upload.upload);
+
+  // 分页获取数据
+  router.get('/api/upload/getPage', jwt, controller.upload.getPage);
+
+  /**
+   * upload router end
+   */
+
 };
