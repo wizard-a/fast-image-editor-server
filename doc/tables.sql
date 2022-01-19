@@ -40,7 +40,7 @@ CREATE TABLE `t_templete` (
   `id` integer AUTO_INCREMENT COMMENT '主键',
   `templete_type_id` varchar(25) NOT NULL COMMENT '模板类型',
   `content` varchar(1000) NOT NULL COMMENT '模板内容',
-  `image` varchar(255) NOT NULL COMMENT '模板图片'
+  `image` varchar(255) NOT NULL COMMENT '模板图片',
   `created_by` varchar(25) NOT NULL COMMENT '创建人',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_by` varchar(25) DEFAULT NULL COMMENT '修改人',
@@ -54,15 +54,22 @@ CREATE TABLE `t_templete` (
 DROP TABLE IF EXISTS `t_photo`;
 CREATE TABLE `t_photo` (
   `id` integer AUTO_INCREMENT COMMENT '主键',
-  `path` varchar(25) NOT NULL COMMENT '图片路径',
+  `path` varchar(255) NOT NULL COMMENT '图片路径',
+  `width` decimal DEFAULT NULL COMMENT '图片宽度',
+  `height` decimal DEFAULT NULL COMMENT '图片高度',
+  `thumb_path` varchar(255) NOT NULL COMMENT '图片路径',
+  `thumb_width` decimal DEFAULT NULL COMMENT '缩略图宽度',
+  `thumb_height` decimal DEFAULT NULL COMMENT '缩略图高度',
   `type` varchar(25) DEFAULT NULL COMMENT '图片类型',
-  `source` int NOT NULL COMMENT '照片来源',  -- 1.系统 2.个人
+  `source` int NOT NULL COMMENT '照片来源',  -- 1.系统 2.个人 3.背景图片
   `created_by` varchar(25) NOT NULL COMMENT '创建人',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_by` varchar(25) DEFAULT NULL COMMENT '修改人',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图片';
+
+
 
 
 

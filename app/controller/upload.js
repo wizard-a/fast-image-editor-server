@@ -15,12 +15,18 @@ class UploadController extends Controller {
     const response = new Response(0, null, null);
     // const name = 'egg-multipart-test/' + path.basename(file.filename);
     try {
-      // console.log('files=>', ctx.request.files)
+      console.log('files=>', ctx.request.body)
+      const {source} = ctx.request.body;
       const file = ctx.request.files[0];
-      const res = await ctx.helper.saveFile(file);
+      const res = await ctx.helper.saveFile(file, true);
       const photo = await this.ctx.service.photo.create({
-        path: res.relativePath,
-        source: 2,
+        path: res.path,
+        width: res.width,
+        height: res.height,
+        thumb_path: res.thumbPath, // 缩略图路径
+        thumb_width: res.thumbWidth,
+        thumb_height: res.thumbHeight,
+        source,
       });
       response.message = '上传成功！';
       response.data = res;
